@@ -3,13 +3,15 @@ using System;
 namespace CSharp_LAB_5
 {
     /// <summary>
-    /// Базовый класс "Плавсредство"
+    /// Класс Watercraft содержит общую информацию о плавсредстве.
     /// </summary>
     public class Watercraft
     {
         private string _name;
         private string _type;
         private int _capacity;
+        private string _manufacturer;
+        private int _year;
 
         /// <summary>
         /// Установка и получение поля _name.
@@ -40,7 +42,7 @@ namespace CSharp_LAB_5
             {
                 if (!string.IsNullOrEmpty(value))
                 {
-                    _type = char.ToUpper(value[0]) + value.Substring(1).ToLower().Trim();
+                    _type = value.Trim();
                 }
                 else
                 {
@@ -57,7 +59,7 @@ namespace CSharp_LAB_5
             get => _capacity;
             set
             {
-                if (value > 0)
+                if (value >= 0)
                 {
                     _capacity = value;
                 }
@@ -69,13 +71,53 @@ namespace CSharp_LAB_5
         }
 
         /// <summary>
+        /// Установка и получение поля _manufacturer.
+        /// </summary>
+        public string Manufacturer
+        {
+            get => _manufacturer;
+            set
+            {
+                if (!string.IsNullOrEmpty(value))
+                {
+                    _manufacturer = value.Trim();
+                }
+                else
+                {
+                    throw new FormatException("Incorrect manufacturer.");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Установка и получение поля _year.
+        /// </summary>
+        public int Year
+        {
+            get => _year;
+            set
+            {
+                if (value >= 0)
+                {
+                    _year = value;
+                }
+                else
+                {
+                    throw new FormatException("Incorrect year.");
+                }
+            }
+        }
+
+        /// <summary>
         /// Создает новый экземпляр класса Watercraft с заданными значениями.
         /// </summary>
-        public Watercraft(string name, string type, int capacity)
+        public Watercraft(string name, string type, int capacity, string manufacturer, int year)
         {
             Name = name;
             Type = type;
             Capacity = capacity;
+            Manufacturer = manufacturer;
+            Year = year;
         }
 
         /// <summary>
@@ -83,7 +125,7 @@ namespace CSharp_LAB_5
         /// </summary>
         public override string ToString()
         {
-            return $"Name: {_name}\nType: {_type}\nCapacity: {_capacity}\n";
+            return $"Name: {Name}\nType: {Type}\nCapacity: {Capacity}\nManufacturer: {Manufacturer}\nYear: {Year}\n";
         }
     }
 }

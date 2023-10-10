@@ -1,5 +1,6 @@
 using System;
 
+
 namespace CSharp_LAB_5
 {
     /// <summary>

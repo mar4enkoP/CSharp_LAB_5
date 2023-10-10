@@ -1,39 +1,38 @@
 ﻿using System;
-using CSharp_LAB_5;
 
-namespace WatercraftNamespace
+namespace CSharp_LAB_5
 {
-    class Program
+    internal class Program
     {
         static void Main(string[] args)
         {
-            WatercraftManager manager = new WatercraftManager();
-            
-            manager.AddWatercraft(new Watercraft("Ship1", "Ship", 1000));
-            manager.AddWatercraft(new Watercraft("Barge1", "Barge", 500));
-            manager.AddWatercraft(new Watercraft("Yacht1", "Yacht", 10));
+            WatercraftManager watercraftManager = new WatercraftManager();
 
-           
-            Console.WriteLine("Ship list:");
-            var watercraftArray = manager.GetWatercraftArray();
-            foreach (var watercraft in watercraftArray)
-            {
-                Console.WriteLine(watercraft);
-            }
-            
-            manager.EditWatercraft(1, new Watercraft("Barge2", "Barge", 800));
-            
-            manager.RemoveWatercraft(0);
+            Ship ship = new Ship("Ship1", "Cargo Ship", 5000, "Manufacturer1", 2022, "Cargo", 30, 15);
+            Barge barge = new Barge("Barge1", "Cargo Barge", 3000, "Manufacturer2", 2021, 2000, "Coal", true);
+            Yacht yacht = new Yacht("Yacht1", "Luxury Yacht", 20, "Manufacturer3", 2023, 10, "John Doe", "ABC123");
 
-           
-            Console.WriteLine("\nUpdated list of ships:");
-            watercraftArray = manager.GetWatercraftArray();
-            foreach (var watercraft in watercraftArray)
+            watercraftManager.AddWatercraft(ship);
+            watercraftManager.AddWatercraft(barge);
+            watercraftManager.AddWatercraft(yacht);
+
+            Console.WriteLine("List of Watercrafts:");
+            foreach (var watercraft in watercraftManager.GetWatercraftArray())
             {
                 Console.WriteLine(watercraft);
             }
 
-            Console.ReadLine();
+            Console.WriteLine("\nEditing the first watercraft:");
+            Ship editedShip = new Ship("Edited Ship", "Cargo Ship", 6000, "ManufacturerX", 2021, "Cargo", 35, 20);
+            watercraftManager.EditWatercraft(0, editedShip);
+            Console.WriteLine(watercraftManager.GetWatercraftArray()[0]);
+
+            Console.WriteLine("\nRemoving the second watercraft:");
+            watercraftManager.RemoveWatercraft(1);
+            foreach (var watercraft in watercraftManager.GetWatercraftArray())
+            {
+                Console.WriteLine(watercraft);
+            }
         }
     }
 }
