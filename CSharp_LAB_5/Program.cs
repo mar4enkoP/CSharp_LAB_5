@@ -8,9 +8,9 @@ namespace CSharp_LAB_5
         {
             WatercraftManager watercraftManager = new WatercraftManager();
 
-            Ship ship = new Ship("Ship1", "Cargo Ship", 5000, "Manufacturer1", 2022, "Cargo", 30, 15);
-            Barge barge = new Barge("Barge1", "Cargo Barge", 3000, "Manufacturer2", 2021, 2000, "Coal", true);
-            Yacht yacht = new Yacht("Yacht1", "Luxury Yacht", 20, "Manufacturer3", 2023, 10, "John Doe", "ABC123");
+            Ship ship = new Ship("Ship", "Cargo Ship", 5000, "ManufacturerA", 2022, "Cargo", 30, 15);
+            Barge barge = new Barge("Barge", "Cargo Barge", 3000, "ManufacturerB", 2021, 2000, "Coal", true);
+            Yacht yacht = new Yacht("Yacht", "elite", 20, "ManufacturerC", 2023, 10, "John Doe", "BH1234");
 
             watercraftManager.AddWatercraft(ship);
             watercraftManager.AddWatercraft(barge);
